@@ -1,9 +1,14 @@
 import React from "react";
+import './TextDes.css'
 
-const TextDes = () => {
+const TextDes = props => {
 
-
-    return 'textdesphreturn';
+    return (
+        <div className = 'explanBox'>
+            <p className = 'explanCont'>{props.explan}</p>
+            <a href = {props.hdImg} className ='hdLinkTxt'>HD Image</a>
+        </div>
+    );
 }
 
 export default TextDes;
