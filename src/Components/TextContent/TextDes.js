@@ -1,9 +1,9 @@
 import React from "react";
 
-const Header = () => {
+const TextDes = () => {
 
 
     return 'textdesphreturn';
 }
 
-export default Header;
+export default TextDes;
