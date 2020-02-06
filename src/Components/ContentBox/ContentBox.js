@@ -8,44 +8,57 @@ import './ContentBox.css'
 const ContentBox = () => {
 const [imgData, setImgData] = useState([]);
 const [title, setTitle] = useState('APOD');
-const [date, setDate] = useState();
+const [date, setDate] = useState('2020-01-01');
 
+const year = '2020';
+const month = '01';
+const day = '26';
+const dateStr = `&date=${year}-${month}-${day}`;
+console.log(dateStr);
 useEffect(() => {
     axios
-        .get(`https://api.nasa.gov/planetary/apod?api_key=YJEP9rCzIGrpzsvr9FBAQurWLIMR1KEWEq2f3HMd&date=2020-02-03`)
+        .get(`https://api.nasa.gov/planetary/apod?api_key=YJEP9rCzIGrpzsvr9FBAQurWLIMR1KEWEq2f3HMd${dateStr}`)
         .then(response =>{
 
             console.log(response.data);
             setImgData(response.data);
             setTitle(response.data.title);
-            setDate(response.data.date);
+            
         })
         .catch(err => {
             console.log('Error:', err);
         });
 
-}, [title])
+}, [date])
 console.log(imgData);
 return (
     <div>
-    <Header />
-     <Image
-        key = {imgData.id}
-        img = {imgData.url}
-        hdImg = {imgData.hdurl}
-        date = {imgData.date} 
-     />
-        
-     <h2>{imgData.title}</h2>
-     <TextDes 
-        key = {imgData.id}
-        explan = {imgData.explanation}
-        hdImg = {imgData.hdurl}
+        <Header 
+            key = {imgData.id}
+            date = {date}
+            setDate = {setDate}
+            curDate = {imgData.date}
+        />
+        <Image
+            key = {imgData.id}
+            img = {imgData.url}
+            hdImg = {imgData.hdurl}
+            date = {imgData.date} 
+        />
+            
+        <h2>{imgData.title}</h2>
+
+        <TextDes 
+            key = {imgData.id}
+            explan = {imgData.explanation}
+            hdImg = {imgData.hdurl}
 
 
 
-     />
-     <p>copyright</p>
+
+        />
+
+        <p className='copyright'>{imgData.copyright}</p>
     </div>
 );
 }

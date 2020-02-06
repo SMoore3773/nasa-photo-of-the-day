@@ -6,7 +6,7 @@ const TextDes = props => {
     return (
         <div className = 'explanBox'>
             <p className = 'explanCont'>{props.explan}</p>
-            <a href = {props.hdImg} className ='hdLinkTxt'>HD Image</a>
+            <a className ='hdLinkTxt' href = {props.hdImg}>HD Image</a>
         </div>
     );
 }
