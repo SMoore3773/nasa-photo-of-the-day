@@ -17,12 +17,13 @@ const [day, setDay] = useState(1);
 const dateStr = `&date=${year}-${month}-${day}`;
 
 
+
 useEffect(() => {
     axios
         .get(`https://api.nasa.gov/planetary/apod?api_key=YJEP9rCzIGrpzsvr9FBAQurWLIMR1KEWEq2f3HMd${dateStr}`)
         .then(response =>{
 
-            console.log(response.data);
+            
             setImgData(response.data);
             setTitle(response.data.title);
             
@@ -31,8 +32,8 @@ useEffect(() => {
             console.log('Error:', err);
         });
 
-}, [day])
-console.log(imgData);
+}, [dateStr])
+
 return (
     <div>
         <Header 
@@ -41,12 +42,22 @@ return (
             setDate = {setDate}
             curDate = {imgData.date}
         />
-        <div className = 'dateButtons'>
+        <div className = 'dayButtons'>
             <button onClick = {() => setDay(day -1)} className = 'previos'>Previos Day</button>
-            <button className = 'random'>Random Day</button>
-            <button onClick ={()=> setDay(day+1)} className = 'next'>Next Day</button>
-              
+            <button onClick={()=> setDay(Math.floor(Math.random() * (30-1) + 1))}className = 'random'>Random Day</button>
+            <button onClick ={()=> setDay(day+1)} className = 'next'>Next Day</button>  
         </div>
+        <div className = 'monthButtons'>
+            <button onClick = {() => setMonth(month -1)} className = 'previos'>Previos Month</button>
+            <button  onClick={()=> setMonth(Math.floor(Math.random() * (13-1) + 1))} className = 'random'>Random Month</button>
+            <button onClick ={()=> setMonth(month+1)} className = 'next'>Next Month</button>  
+        </div>
+        <div className = 'yearButtons'>
+            <button onClick = {() => setYear(year -1)} className = 'previos'>Previos Year</button>
+            <button onClick = {() => setYear(Math.floor(Math.random() * (2018-1996) + 1996))} className = 'random'>Random Year</button>
+            <button onClick ={()=> setYear(year+1)} className = 'next'>Next Year</button>  
+        </div>
+
         <Image
             key = {imgData.id}
             img = {imgData.url}

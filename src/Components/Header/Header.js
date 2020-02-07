@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import './Header.css'
 
 const Header = props => {
-console.log(props.curDate)
+
 
     return (
         <div className ='HeaderBox'>

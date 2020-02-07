@@ -4,8 +4,19 @@ div{
     align-items: center;
     justify-content: center;
 }
-.dateButtons{
+.dayButtons{
     display:flex;
     flex-direction: row;
-    margin: 20px;
+    margin: 10px 0 5px 0;
+}
+.monthButtons{
+    display:flex;
+    flex-direction: row;
+    margin: 5px;
+}
+.yearButtons{
+    display:flex;
+    flex-direction: row;
+    margin: 10px;
+
 }
