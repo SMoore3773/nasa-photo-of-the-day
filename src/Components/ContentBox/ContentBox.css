@@ -4,3 +4,8 @@ div{
     align-items: center;
     justify-content: center;
 }
+.dateButtons{
+    display:flex;
+    flex-direction: row;
+    margin: 20px;
+}

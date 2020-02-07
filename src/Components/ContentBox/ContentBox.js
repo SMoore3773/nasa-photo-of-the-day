@@ -11,9 +11,9 @@ const [imgData, setImgData] = useState([]);
 const [title, setTitle] = useState('APOD');
 const [date, setDate] = useState();
 
-const [year, setYear] = useState('2020');
-const [month, setMonth] = useState('01');
-const [day, setDay] = useState('01');
+const [year, setYear] = useState(2020);
+const [month, setMonth] = useState(1);
+const [day, setDay] = useState(1);
 const dateStr = `&date=${year}-${month}-${day}`;
 
 
@@ -31,7 +31,7 @@ useEffect(() => {
             console.log('Error:', err);
         });
 
-}, [date])
+}, [day])
 console.log(imgData);
 return (
     <div>
@@ -41,6 +41,12 @@ return (
             setDate = {setDate}
             curDate = {imgData.date}
         />
+        <div className = 'dateButtons'>
+            <button onClick = {() => setDay(day -1)} className = 'previos'>Previos Day</button>
+            <button className = 'random'>Random Day</button>
+            <button onClick ={()=> setDay(day+1)} className = 'next'>Next Day</button>
+              
+        </div>
         <Image
             key = {imgData.id}
             img = {imgData.url}
