@@ -3,18 +3,20 @@ import axios from 'axios';
 import TextDes from '../TextContent/TextDes';
 import Image from '../Image/Image';
 import Header from '../Header/Header'
+
 import './ContentBox.css'
 
 const ContentBox = () => {
 const [imgData, setImgData] = useState([]);
 const [title, setTitle] = useState('APOD');
-const [date, setDate] = useState('2020-01-01');
+const [date, setDate] = useState();
 
-const year = '2020';
-const month = '01';
-const day = '26';
+const [year, setYear] = useState('2020');
+const [month, setMonth] = useState('01');
+const [day, setDay] = useState('01');
 const dateStr = `&date=${year}-${month}-${day}`;
-console.log(dateStr);
+
+
 useEffect(() => {
     axios
         .get(`https://api.nasa.gov/planetary/apod?api_key=YJEP9rCzIGrpzsvr9FBAQurWLIMR1KEWEq2f3HMd${dateStr}`)
