@@ -1,0 +1,22 @@
+div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.dayButtons{
+    display:flex;
+    flex-direction: row;
+    margin: 10px 0 5px 0;
+}
+.monthButtons{
+    display:flex;
+    flex-direction: row;
+    margin: 5px;
+}
+.yearButtons{
+    display:flex;
+    flex-direction: row;
+    margin: 10px;
+
+}
